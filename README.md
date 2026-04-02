@@ -90,7 +90,6 @@ Workflow: `.github/workflows/ci.yml`
 - Security policy: [SECURITY.md](SECURITY.md)
 - PR template: [.github/pull_request_template.md](.github/pull_request_template.md)
 - Release template: [.github/release_template.md](.github/release_template.md)
-- Case study: [CASE_STUDY_RU.md](CASE_STUDY_RU.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 
 ## Системные требования

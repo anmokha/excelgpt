@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parent.parent
 REQUIRED_FILES = [
     'README.md',
     'CHANGELOG.md',
-    'CASE_STUDY_RU.md',
     'CONTRIBUTING.md',
     'SECURITY.md',
     'docs/ARCHITECTURE_RU.md',
