@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install oletools
+
+      - name: Compile tool scripts
+        run: |
+          python -m py_compile tools/extract_and_annotate_vba.py
+          python -m py_compile tools/split_aihelper_modules.py
+          python -m py_compile tools/build_public_sources.py
+          python -m py_compile tools/validate_repo.py
+
+      - name: Validate repository layout
+        run: |
+          python tools/validate_repo.py
+
+      - name: Build public sources from XLAM
+        run: |
+          python tools/build_public_sources.py AI_Assistant.xlam
+
+      - name: Check generated files are up to date
+        run: |
+          git diff --exit-code -- src-vba/public
